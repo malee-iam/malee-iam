@@ -1,6 +1,14 @@
 # Hi, I'm Malee 👋
 
-I am building hands-on experience in Identity and Access Management (IAM) and cybersecurity, with a focus on identity administration, directory integration, authentication, access control, and troubleshooting.
+I am building hands-on experience in Identity and Access Management (IAM) and cybersecurity, with a focus on identity administration, directory integration, authentication, access control, and troubleshooting. 
+I am developing hands-on skills in Identity and Access Management (IAM) and cybersecurity through practical labs using Okta, Microsoft Active Directory, and Windows Server.
+
+My current learning focuses on identity administration, authentication, access control, directory integration, user and group management, and technical troubleshooting as I work toward a career in IAM and cybersecurity
+
+## Education
+ Bachelor of Science in Psychology with an emphasis in Forensic Psychology
+ 
+Grand Canyon University
 
 ##  Current Focus
 
