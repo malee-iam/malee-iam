@@ -28,7 +28,10 @@ The project includes:
 - Verification of operational agent connectivity
 
 ➡️ [View the Okta + Active Directory IAM Lab](https://github.com/malee-iam/okta-active-directory-iam-lab)
+### Windows Server + Active Directory Lab
+I built and documented a Windows Server and Active Directory lab environment to develop hands-on experience with domain controller configuration, organizational units, users, groups, directory administration, and troubleshooting.
 
+➡️ [View the Windows Server + Active Directory Lab](https://github.com/malee-iam/windows-server-active-directory-lab)
 ##  Currently Learning
 
 - Okta Identity and Access Management
