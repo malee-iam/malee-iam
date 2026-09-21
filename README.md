@@ -1,16 +1,46 @@
-## Hi there 👋
+# Hi, I'm Malee 👋
 
-<!--
-**malee-iam/malee-iam** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I am building hands-on experience in Identity and Access Management (IAM) and cybersecurity, with a focus on identity administration, directory integration, authentication, access control, and troubleshooting.
 
-Here are some ideas to get you started:
+##  Current Focus
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Identity and Access Management (IAM)
+- Okta Administration
+- Microsoft Active Directory
+- User and Group Management
+- Directory Integration
+- Profile and Attribute Mapping
+- Identity Synchronization
+- Cybersecurity Fundamentals
+
+##  Hands-On Lab Experience
+
+### Okta + Active Directory IAM Lab
+I built and documented a hands-on IAM lab integrating Okta with Microsoft Active Directory.
+
+The project includes:
+- Active Directory integration with Okta
+- Okta AD Agent configuration
+- User and group imports
+- Profile and attribute mapping
+- Directory synchronization
+- Troubleshooting agent connectivity and time synchronization issues
+- Verification of operational agent connectivity
+
+➡️ [View the Okta + Active Directory IAM Lab](https://github.com/malee-iam/okta-active-directory-iam-lab)
+
+##  Currently Learning
+
+- Okta Identity and Access Management
+- Identity lifecycle management
+- Authentication and access control
+- Security+ concepts
+- Cybersecurity fundamentals
+
+##  Career Goal
+
+I am developing practical IAM and cybersecurity skills with the goal of pursuing opportunities in Identity and Access Management and cybersecurity.
+
+##  Portfolio Development
+
+This GitHub profile documents my hands-on labs, troubleshooting experience, and continued development in IAM and cybersecurity.
