@@ -6,7 +6,7 @@ I am developing hands-on skills in Identity and Access Management (IAM) and cybe
 My current learning focuses on identity administration, authentication, access control, directory integration, user and group management, and technical troubleshooting as I work toward a career in IAM and cybersecurity
 
 ## Education
- Bachelor of Science in Psychology with an emphasis in Forensic Psychology
+ Bachelor of Science in Forensic Psychology
  
 Grand Canyon University
 
