@@ -90,6 +90,54 @@ No manual Active Directory import was required to create the user's Okta identit
 <img width="1762" height="90" alt="jit-provisioning-user-active" src="https://github.com/user-attachments/assets/f75b54c3-4e95-4b72-8d8d-5b63763848a3" />
 
 
+## SAML 2.0 Single Sign-On (SSO)
+
+I configured and tested SAML 2.0 Single Sign-On between Okta and a SAML Service Provider to demonstrate federated authentication.
+
+### SAML Configuration
+
+Okta was configured as the Identity Provider (IdP), while IAMShowcase was used as the Service Provider (SP).
+
+The SAML integration included:
+
+- Assertion Consumer Service (ACS) URL configuration
+- Service Provider Entity ID configuration
+- User assignment to the SAML application
+- Okta username as the federated identity
+- SAML assertion-based authentication
+
+### Authentication Flow
+
+Active Directory User → Okta AD Agent → Okta → SAML Assertion → Service Provider → Successful Federation
+
+### Troubleshooting
+
+During initial testing, the SAML application failed to reach the Service Provider and returned a connection timeout.
+
+I reviewed the destination endpoint and identified an incorrect hostname in the ACS URL. After correcting the ACS endpoint and retesting the application, the SAML authentication flow completed successfully.
+
+This troubleshooting process demonstrated the importance of validating SAML endpoints when diagnosing federation failures.
+
+### SAML Validation
+
+The assigned Active Directory user authenticated through Okta and launched the SAML application from the Okta dashboard.
+
+Okta generated the SAML authentication response, and the Service Provider successfully accepted the federated identity.
+
+<img width="1577" height="456" alt="SAML -SSO-successful-federation" src="https://github.com/user-attachments/assets/b60413cc-58db-40ca-9c44-6416f2f4888f" />
+
+
+### Result
+
+SAML 2.0 Single Sign-On was successfully validated between Okta and the Service Provider.
+
+The completed authentication workflow demonstrated:
+
+**Active Directory → Okta AD Agent → Delegated Authentication → Okta → SAML 2.0 → Service Provider**
+
+This lab demonstrated hands-on experience configuring, testing, and troubleshooting federated authentication using SAML 2.0.
+
+
 
 
 ##  Currently Learning
