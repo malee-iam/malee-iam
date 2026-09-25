@@ -137,6 +137,74 @@ The completed authentication workflow demonstrated:
 
 This lab demonstrated hands-on experience configuring, testing, and troubleshooting federated authentication using SAML 2.0.
 
+## Secure Web Authentication (SWA) Integration
+
+I configured a custom Secure Web Authentication (SWA) application in Okta to practice credential-based Single Sign-On for applications that do not support federated authentication protocols such as SAML or OIDC.
+
+### SWA Application Configuration
+
+Using Okta's Classic App Integration experience, I created a custom internal application named **MyFictionalApp** and configured Secure Web Authentication (SWA) as the sign-in method.
+
+The integration was configured with:
+
+- Sign-in method: Secure Web Authentication (SWA)
+- Application type: Internal application
+- Credential management: Administrator sets username; password is the same as the user's Okta password
+- Application username: Okta username
+- Application username update behavior: Default
+
+A fictional login URL was used for this training exercise.
+
+
+<img width="1402" height="647" alt="okta-swa-custom-app-configuration" src="https://github.com/user-attachments/assets/80cdb47c-c8c5-43b7-a871-ef76f48a525a" />
+
+
+### User Assignment and Access Provisioning
+
+To practice application-level access provisioning, I assigned an existing lab identity, **Maya Thompson**, to MyFictionalApp.
+
+The assignment granted the user an application entitlement without creating an additional Okta identity.
+
+<img width="1357" height="687" alt="SWA-user-application-assignment" src="https://github.com/user-attachments/assets/853e54ce-d9c0-4950-b682-8e1bd14c7e2e" />
+
+
+### SWA Authentication Model
+
+Unlike SAML federation, where Okta sends a SAML assertion to a Service Provider, SWA uses application credentials with the application's existing login form.
+
+**SWA Flow:**
+
+User → Okta → Assigned SWA Application → Application Credentials → Application Login Form
+
+### SAML vs. SWA
+
+**SAML 2.0**
+
+User → Okta → SAML Assertion → Service Provider → Access
+
+**SWA**
+
+User → Okta → Stored Application Credentials → Application Login Form → Access
+
+This exercise reinforced the difference between federated SSO and credential-based SSO.
+
+### Validation Status
+
+The SWA application integration was successfully configured and an existing lab user was successfully assigned to the application.
+
+Because the exercise used a fictional application URL, live authentication to the external application was not tested.
+
+### Result
+
+This lab demonstrated hands-on experience with:
+
+- Creating a custom SWA application integration
+- Configuring SWA credential settings
+- Assigning an existing identity to an application
+- Provisioning an application entitlement
+- Comparing credential-based SSO with SAML federation
+
+The exercise expanded the IAM lab beyond federated authentication and demonstrated another method Okta can use to provide application access.
 
 
 
