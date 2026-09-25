@@ -207,6 +207,82 @@ This lab demonstrated hands-on experience with:
 The exercise expanded the IAM lab beyond federated authentication and demonstrated another method Okta can use to provide application access.
 
 
+## Self-Service Application Access and Approval Workflow
+
+I configured and tested Okta Self Service to demonstrate a governed application access request and approval workflow.
+
+Instead of manually assigning application access as an administrator, this workflow allowed an existing lab user to request access to an organization-managed application. The request was then routed to a designated approver for review.
+
+### Self-Service Configuration
+
+I enabled self-service access for the existing SAML application and configured the application to require approval before access could be granted.
+
+This changed the access model from:
+
+**Direct Assignment:**
+
+Administrator → Application Assignment → User Access
+
+**Self-Service Access:**
+
+User → Application Request → Approver Review → Approval → Application Assignment → Access
+
+### Application Access Request
+
+An existing lab user who did not have the SAML application assigned submitted a self-service request for access.
+
+The request entered the approval workflow and was routed to the designated approver.
+<img width="882" height="442" alt="self-service-app-request- pending" src="https://github.com/user-attachments/assets/66fe08b6-33fd-448b-8da5-d163fa2f54f7" />
+
+### Approval Review
+
+The designated approver received the pending application request through the Okta Tasks workflow.
+
+The approver reviewed the requested SAML application entitlement before making the access decision
+
+<img width="1317" height="356" alt="self-service-app-approval-review" src="https://github.com/user-attachments/assets/99e954cc-cc3c-4494-b25d-ddfad54e1150" />
+
+
+
+
+### Access Approval and Application Assignment
+
+After the request was approved, Okta processed the access request and granted the application entitlement to the requesting user.
+
+The application assignment was verified in Okta, confirming that access resulted from the approval workflow rather than a manual administrator assignment.
+
+<img width="1380" height="105" alt="self-service-app-access-approved" src="https://github.com/user-attachments/assets/165ff13a-f4fe-416d-ae79-177386adbd90" />
+
+
+
+### End-User Access Validation
+
+After approval, the user signed back into the Okta End-User Dashboard and launched the newly approved SAML Service Provider application.
+
+The application successfully federated the user to the Service Provider, confirming that the approved self-service request resulted in functional application access.
+
+<img width="1707" height="462" alt="self-service-aproved-app-visible" src="https://github.com/user-attachments/assets/bca68e42-6f99-4182-a6fb-f39d2f218650" />
+
+
+### Access Request Flow
+
+User → Application Request → Approver Review → Approval → Application Assignment → SAML SSO → Access Granted
+
+### Result
+
+This exercise demonstrated hands-on experience with:
+
+- Configuring self-service application access
+- Requiring approval for application requests
+- Delegating application approval responsibilities
+- Submitting an application request as an end user
+- Reviewing and approving an access request
+- Validating the resulting application entitlement
+- Confirming successful SAML access after approval
+
+
+
+
 
 ##  Currently Learning
 
