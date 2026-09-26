@@ -282,6 +282,116 @@ This exercise demonstrated hands-on experience with:
 
 
 
+## Universal Directory: Profile Management and Attribute Mapping
+
+I worked with Okta Universal Directory to understand how identity profiles and attributes are centrally managed across connected directories and applications.
+
+Universal Directory provides a centralized identity profile layer where attributes can be defined, extended, mapped, and used across identity lifecycle workflows.
+
+### Profile Editor
+
+Using the Profile Editor, I reviewed the different identity profiles available in the Okta organization, including the Okta user profile, the connected Active Directory profile, and application-specific profiles.
+
+This demonstrated how Okta can manage profile schemas from multiple identity sources and connected applications.
+
+
+<img width="1325" height="835" alt="universal-directory-profile-editor-overview" src="https://github.com/user-attachments/assets/c76d1d08-1eba-4c41-803f-a4929b16aec5" />
+
+
+
+### Custom Profile Attribute
+
+I extended the Okta user profile by creating a custom attribute named `EmployeeType`.
+
+The attribute was configured as a string with an enumerated list of allowed values:
+
+- Employee
+- Contractor
+
+This type of custom attribute can be used to classify identities and support future access, mapping, provisioning, and lifecycle decisions.
+
+<img width="1217" height="1007" alt="universal-directory-custom-attribute" src="https://github.com/user-attachments/assets/e655e896-f2d9-475c-be6e-810decccf188" />
+
+
+### Custom Attribute Validation
+
+After saving and applying the profile change, I reviewed the user profile schema and confirmed that `EmployeeType` appeared alongside existing attributes such as department, division, organization, manager, and cost center.
+
+This confirmed that the custom attribute was successfully added to the Universal Directory profile.
+
+
+<img width="1307" height="617" alt="universal-directory-profile-attribute-list" src="https://github.com/user-attachments/assets/09004e55-7ab8-46b1-9897-8642a310b1ab" />
+
+
+
+
+### Attribute Mapping
+
+After configuring the profile schema, I worked with attribute mappings between Active Directory and Okta Universal Directory.
+
+Attribute mapping defines how identity information moves from a source profile to a target profile.
+
+In this exercise, I mapped the Active Directory `sAMAccountName` attribute to the Okta `nickname` attribute.
+
+The mapping flow was:
+
+Active Directory `sAMAccountName` → Okta `nickname`
+
+This demonstrated how source-directory identity data can populate or transform attributes in an Okta user profile.
+
+
+
+<img width="1267" height="1046" alt="ad-to-okta-attribute-mapping" src="https://github.com/user-attachments/assets/91f87896-7780-41b8-98c3-b323b5762e25" />
+
+
+
+### Attribute Mapping Validation
+
+After saving and applying the mapping, I used Okta's mapping preview feature with an existing lab user.
+
+The Active Directory `sAMAccountName` value was `mcarter`, and the preview confirmed that the value successfully mapped to the Okta `nickname` attribute as `mcarter`.
+
+This validated the attribute mapping before relying on it in a broader identity workflow.
+
+
+<img width="1212" height="437" alt="attribute-mapping-user-preview" src="https://github.com/user-attachments/assets/753f990d-d8b5-4592-975a-cea223205cea" />
+
+
+### Identity Data Flow
+
+Source Profile → Attribute Mapping → Target Profile
+
+In this lab:
+
+Active Directory → Okta Universal Directory
+
+### Result
+
+This exercise demonstrated hands-on experience with:
+
+- Navigating Okta Universal Directory and Profile Editor
+- Reviewing identity source and application profiles
+- Extending the Okta user schema with a custom attribute
+- Creating enumerated attribute values
+- Validating custom profile attributes
+- Configuring AD-to-Okta attribute mappings
+- Using mapping preview to validate attribute transformations
+- Understanding source and target identity profiles
+
+The exercise reinforced the difference between three related IAM concepts:
+
+- Profile management defines what identity attributes are available.
+- Attribute mapping controls how those values move between systems.
+- Provisioning uses identity information to create, update, or deactivate downstream accounts.
+
+
+
+
+
+
+
+
+
 
 
 ##  Currently Learning
