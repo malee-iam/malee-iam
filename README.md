@@ -488,6 +488,137 @@ Profile sourcing determines which system is authoritative for the user's overall
 
 
 
+## Password Policy and Multifactor Authentication
+
+I configured password and multifactor authentication controls in Okta to practice group-based security policy enforcement and MFA-protected application access.
+
+### HR Password Policy
+
+I created a dedicated password policy for the Human Resources group.
+
+The policy was configured with:
+
+- Assigned group: `HR-Users`
+- Minimum password length: 10 characters
+- Lowercase letter required
+- Uppercase letter required
+- Number required
+- Symbol required
+
+The remaining settings were left aligned with the existing default configuration.
+
+This demonstrated how Okta can apply different password requirements to specific user populations.
+
+
+<img width="1245" height="980" alt="okta-hr-password-policy-configuration" src="https://github.com/user-attachments/assets/33397cce-6bd7-4c21-a08a-fe65983bdbf0" />
+
+
+### HR Password Policy Rule
+
+I created an `HR Password Rule` to control self-service password operations for users governed by the HR password policy.
+
+The rule allowed:
+
+- Password change
+- Password reset
+- Account unlock
+
+The rule applied from any network location and used the Okta account management authentication policy for recovery and account management operations.
+
+
+
+
+### MFA Enrollment Policy
+
+I created an MFA enrollment policy for the `IT-Users` group.
+
+The policy required:
+
+- Password
+- Okta Verify
+
+Email remained available as an optional authenticator.
+
+A rule was added so the enrollment policy could be applied to the targeted users.
+
+
+<img width="1267" height="890" alt="okta-mfa-enrollment-policyt-it-users" src="https://github.com/user-attachments/assets/7a393367-c8ce-4e7d-b4ff-2da4e77d272e" />
+
+
+
+### MFA Sign-On Policy
+
+I created an application sign-on policy named:
+
+`IAM Lab MFA Sign-On Policy`
+
+The policy used the enabled catch-all rule requiring:
+
+`Any 2 factor types`
+
+This required users accessing applications assigned to the policy to satisfy two authentication factors.
+
+
+<img width="1330" height="852" alt="okta-mfa-two-factor-authentication=policy" src="https://github.com/user-attachments/assets/847d5b38-e8ee-44c1-a6fc-19e6acbff445" />
+
+
+
+### SAML Application Assignment
+
+I assigned the existing SAML Service Provider application to the MFA sign-on policy.
+
+This connected the application's access requirements to the two-factor authentication policy.
+
+
+<img width="1351" height="787" alt="okta-mfa-smal-app-policy-assignment" src="https://github.com/user-attachments/assets/c894f085-7e18-4c98-9ba2-c7ee7b8c1c74" />
+
+
+### MFA-Protected SAML Access Validation
+
+I tested the policy using an existing lab user.
+
+The user authenticated using:
+
+Password → Okta Verify
+
+After satisfying both factors, the user launched the SAML Service Provider and successfully federated into the application.
+
+This validated that MFA was enforced before SAML application access was granted.
+
+
+<img width="1400" height="807" alt="okta-mfa-saml-access-validation" src="https://github.com/user-attachments/assets/74c164ac-17fe-42c7-b966-89b3f353938c" />
+
+
+
+### Authentication Flow
+
+IT User → Password → Okta Verify → MFA Satisfied → SAML Application → Access Granted
+
+### Result
+
+This exercise demonstrated hands-on experience with:
+
+- Creating group-specific password policies
+- Applying stronger password requirements to HR users
+- Configuring password policy rules
+- Enabling self-service password change, reset, and account unlock
+- Creating MFA enrollment policies
+- Requiring Password and Okta Verify enrollment
+- Configuring application sign-on policies
+- Enforcing two-factor authentication
+- Assigning applications to authentication policies
+- Validating MFA-protected SAML access
+
+This exercise reinforced the difference between:
+
+- Password policies: define password requirements
+- Enrollment policies: define which authenticators users must enroll
+- Authentication policies: define what factors users must actually present to access an application
+
+
+
+
+
 
 
 
