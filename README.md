@@ -341,6 +341,8 @@ This demonstrated how source-directory identity data can populate or transform a
 
 
 
+
+
 <img width="1267" height="1046" alt="ad-to-okta-attribute-mapping" src="https://github.com/user-attachments/assets/91f87896-7780-41b8-98c3-b323b5762e25" />
 
 
@@ -352,6 +354,8 @@ After saving and applying the mapping, I used Okta's mapping preview feature wit
 The Active Directory `sAMAccountName` value was `mcarter`, and the preview confirmed that the value successfully mapped to the Okta `nickname` attribute as `mcarter`.
 
 This validated the attribute mapping before relying on it in a broader identity workflow.
+
+
 
 
 <img width="1212" height="437" alt="attribute-mapping-user-preview" src="https://github.com/user-attachments/assets/753f990d-d8b5-4592-975a-cea223205cea" />
@@ -383,6 +387,103 @@ The exercise reinforced the difference between three related IAM concepts:
 - Profile management defines what identity attributes are available.
 - Attribute mapping controls how those values move between systems.
 - Provisioning uses identity information to create, update, or deactivate downstream accounts.
+
+
+
+## Profile Sourcing and Attribute-Level Sourcing
+
+I configured and tested profile sourcing in Okta to understand how an authoritative identity source controls user profile data across connected systems.
+
+In this lab, Active Directory was configured as the primary profile source for AD-integrated users.
+
+### Profile-Level Sourcing
+
+Active Directory acted as the authoritative source for the user's profile.
+
+Conceptually:
+
+Active Directory → Okta Universal Directory
+
+To validate profile sourcing, I updated an existing lab user's Title attribute in Active Directory to:
+
+`IAM Lab Analyst`
+
+After running an Active Directory import into Okta, the user's Okta profile reflected the updated Title value.
+
+This demonstrated that changes made in the authoritative source were successfully propagated into Okta.
+
+
+<img width="1690" height="557" alt="profile-sourcing-ad-authoritative-source" src="https://github.com/user-attachments/assets/b79b2895-66cb-436d-b5e1-83e597b91ff2" />
+
+
+### Profile Sourcing Validation
+
+After updating the user's Title in Active Directory and importing the directory changes, I verified that the Okta user profile reflected:
+
+`Title = IAM Lab Analyst`
+
+This confirmed that Active Directory was successfully sourcing the corresponding profile attribute into Okta.
+
+
+
+
+<img width="887" height="862" alt="profile--sourcing-carter-title-validation" src="https://github.com/user-attachments/assets/a3e889f0-6311-48c8-898e-bfa84637bbd2" />
+
+
+### Attribute-Level Sourcing
+
+I also configured attribute-level sourcing to demonstrate how an individual attribute can use a different authoritative source than the user's overall profile.
+
+While Active Directory remained the primary profile source, the Okta `nickname` attribute was configured to inherit from Okta.
+
+I then changed the user's Nickname in Okta to:
+
+`carter-lab`
+
+After running another Active Directory import, the user's profile retained:
+
+`Title = IAM Lab Analyst`
+
+and
+
+`Nickname = carter-lab`
+
+This demonstrated that the Title continued to follow the Active Directory profile source, while the Nickname attribute remained controlled by Okta.
+
+
+
+
+<img width="742" height="752" alt="attribute-level-sourcing-carter-validation" src="https://github.com/user-attachments/assets/49232032-2fec-4ed2-9220-026d4e549220" />
+
+
+
+### Sourcing Model
+
+Profile-Level Sourcing:
+
+Active Directory → Okta User Profile
+
+Attribute-Level Sourcing:
+
+Active Directory → Most Profile Attributes
+
+Okta → Nickname Attribute
+
+### Result
+
+This exercise demonstrated hands-on experience with:
+
+- Configuring profile sourcing in Okta
+- Using Active Directory as an authoritative identity source
+- Validating profile updates from Active Directory to Okta
+- Understanding profile-level sourcing
+- Configuring attribute-level sourcing
+- Assigning a different source to an individual profile attribute
+- Validating that multiple authoritative sources can control different attributes within the same user profile
+
+This lab reinforced the difference between profile sourcing and attribute-level sourcing.
+
+Profile sourcing determines which system is authoritative for the user's overall profile, while attribute-level sourcing allows individual attributes to use a different authoritative source.
 
 
 
