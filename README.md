@@ -10,15 +10,21 @@ My current learning focuses on identity administration, authentication, access c
  
 Grand Canyon University
 
-##  Current Focus
+## Current Focus
 
 - Identity and Access Management (IAM)
 - Okta Administration
 - Microsoft Active Directory
-- User and Group Management
-- Directory Integration
+- Identity Lifecycle Management (Joiner, Mover, Leaver)
+- Authentication and Authorization
+- Multi-Factor Authentication (MFA)
+- Single Sign-On (SSO) and SAML 2.0
+- User and Group Administration
+- Directory Integration and Synchronization
 - Profile and Attribute Mapping
-- Identity Synchronization
+- Just-in-Time (JIT) Provisioning
+- Application Access and Provisioning
+- IAM Troubleshooting and Root-Cause Analysis
 - Cybersecurity Fundamentals
 
 ##  Hands-On Lab Experience
@@ -40,6 +46,101 @@ The project includes:
 I built and documented a Windows Server and Active Directory lab environment to develop hands-on experience with domain controller configuration, organizational units, users, groups, directory administration, and troubleshooting.
 
 ➡️ [View the Windows Server + Active Directory Lab](https://github.com/malee-iam/windows-server-active-directory-lab)
+
+###  Project Overview
+
+This project simulates an enterprise Identity and Access Management (IAM) environment integrating Microsoft Active Directory with Okta. The lab was designed to practice identity administration, directory integration, authentication, user and group management, profile and attribute mapping, access provisioning, and IAM troubleshooting.
+
+Rather than focusing only on configuration, this project documents the business purpose, implementation, validation, troubleshooting, and evidence used to verify that each identity process functions as expected.
+
+## Business Scenario
+
+A simulated organization requires centralized identity management between its on-premises Microsoft Active Directory environment and Okta.
+
+Active Directory serves as the directory source for workforce identities, while Okta provides cloud-based identity, authentication, and application access capabilities.
+
+The IAM implementation must support:
+
+- Centralized user and group management
+- Directory synchronization between Active Directory and Okta
+- Secure user authentication
+- Profile and attribute mapping
+- Multi-factor authentication (MFA)
+- Application access assignment
+- Just-in-Time (JIT) provisioning
+- Single Sign-On (SSO)
+- Identity lifecycle management
+- Troubleshooting and validation of IAM events
+
+The environment is used to simulate common enterprise IAM administration and troubleshooting scenarios.
+
+## Lab Environment
+
+| Component | Purpose |
+|---|---|
+| Microsoft Active Directory | On-premises identity directory |
+| Windows Server 2025 | Hosts Active Directory Domain Services |
+| IAM-DC01 | Domain Controller |
+| IAMLAB.TEST | Active Directory domain |
+| Okta | Cloud Identity and Access Management platform |
+| Okta Active Directory Agent | Connects Active Directory with Okta |
+| Okta Verify | Multi-factor authentication |
+| SAML 2.0 | Federated authentication / Single Sign-On |
+
+
+## Project Objectives
+
+The objectives of this lab are to:
+
+- Configure an Active Directory environment for IAM practice
+- Integrate Microsoft Active Directory with Okta
+- Install and validate the Okta Active Directory Agent
+- Import and manage users and groups
+- Configure profile and attribute mappings
+- Validate directory synchronization
+- Configure delegated authentication
+- Implement Just-in-Time (JIT) provisioning
+- Configure and test Multi-Factor Authentication (MFA)
+- Configure application access
+- Implement and validate SAML 2.0 Single Sign-On
+- Practice IAM troubleshooting and root-cause analysis
+- Capture technical evidence showing successful IAM operations
+
+
+  ## Identity Architecture
+
+The primary identity flow used throughout the lab is:
+
+**Active Directory → Okta AD Agent → Okta → Authentication / Provisioning → Applications**
+
+### Authentication Flow
+
+**User → Okta → Okta AD Agent → Active Directory → Authentication Result → Okta**
+
+### Federated Application Access
+
+**Active Directory User → Okta → SAML Assertion → Service Provider → Application Access**
+
+## IAM Implementation
+
+The following IAM capabilities were implemented and validated throughout the project:
+
+- Active Directory user and group administration
+- Okta Active Directory Agent integration
+- Directory user and group imports
+- Profile and attribute mapping
+- Directory synchronization
+- Delegated authentication
+- Just-in-Time (JIT) provisioning
+- Okta Verify / MFA enrollment
+- Application assignment and access provisioning
+- SAML 2.0 Single Sign-On
+- Secure Web Authentication (SWA)
+- Profile sourcing and attribute-level sourcing
+- Self-service application access
+
+
+
 ## Just-in-Time (JIT) Provisioning
 
 After successfully configuring delegated authentication between Okta and Active Directory, I enabled **Just-in-Time (JIT) provisioning** to automate user creation during a user's first login.
@@ -616,13 +717,151 @@ This exercise reinforced the difference between:
 - Authentication policies: define what factors users must actually present to access an application
 
 
+## Troubleshooting and Root-Cause Analysis
+
+Troubleshooting was documented throughout the IAM project to demonstrate not only successful configuration, but also the ability to identify, investigate, resolve, and validate identity-related issues.
+
+Each troubleshooting scenario follows:
+
+**Issue → Investigation → Root Cause → Resolution → Validation**
 
 
 
+### Incident 01 — Okta AD Agent / Directory Synchronization
+
+**Issue**
+
+Directory integration and authentication did not initially operate as expected between Active Directory and Okta.
+
+**Investigation**
+
+The environment was reviewed by checking:
+
+- Okta AD Agent operational status
+- Active Directory connectivity
+- Domain Controller configuration
+- Windows Server date and time configuration
+- Directory import behavior
+- Authentication testing
+
+**Root Cause**
+
+Time synchronization between the Windows Server environment and the identity platform contributed to authentication and directory communication issues.
+
+**Resolution**
+
+The Windows Server time zone and time synchronization configuration were corrected and the environment was resynchronized.
+
+**Validation**
+
+- Okta AD Agent reported operational
+- Active Directory users and groups were successfully detected
+- Directory imports completed
+- Authentication testing succeeded
+
+
+### Incident 02 — SAML SSO Connection Failure
+
+**Issue**
+
+During initial SAML testing, the application failed to reach the Service Provider and returned a connection timeout.
+
+**Investigation**
+
+The SAML configuration and destination endpoint were reviewed, including the Assertion Consumer Service (ACS) URL.
+
+**Root Cause**
+
+An incorrect hostname was configured in the ACS endpoint.
+
+**Resolution**
+
+The ACS endpoint was corrected and the SAML authentication flow was tested again.
+
+**Validation**
+
+The assigned user successfully authenticated through Okta, the SAML assertion was accepted by the Service Provider, and federated application access completed successfully.
 
 
 
+## Evidence and Validation
 
+Successful configuration alone was not considered sufficient validation. Each major IAM workflow was tested to verify the expected identity behavior.
+
+Evidence collected throughout the project includes:
+
+- Okta AD Agent operational status
+- Successful Active Directory user and group imports
+- Profile and attribute mappings
+- Successful delegated authentication
+- JIT-provisioned user creation
+- MFA enrollment and authentication
+- Successful application assignment
+- Successful SAML authentication
+- Service Provider access confirmation
+- Profile sourcing validation
+- Self-service application access
+- Troubleshooting before-and-after results
+
+Screenshots included throughout this repository provide supporting technical evidence for the implemented IAM workflows.
+
+
+## Identity Lifecycle Management
+
+### Joiner → Mover → Leaver (JML)
+
+This section documents an end-to-end employee identity lifecycle scenario across Active Directory and Okta.
+
+The lifecycle will demonstrate how identity attributes and access requirements change throughout an employee's relationship with an organization.
+
+### Joiner
+
+- Create a new workforce identity
+- Assign department and role attributes
+- Provision appropriate group membership
+- Provide required application access
+- Validate authentication and access
+- Capture baseline and provisioning evidence
+
+### Mover
+
+- Simulate an employee department or role change
+- Update identity attributes
+- Remove access no longer required
+- Assign access appropriate to the new role
+- Validate that unnecessary access does not remain
+- Capture before-and-after access evidence
+
+### Leaver
+
+- Simulate employee termination
+- Disable the workforce identity
+- Revoke application access
+- Validate that authentication is no longer possible
+- Capture evidence showing when access was removed
+
+The scenario emphasizes least privilege, identity lifecycle management, access governance, and audit evidence.
+
+
+
+## Skills Demonstrated
+
+- Identity and Access Management (IAM)
+- Microsoft Active Directory
+- Okta Identity Management
+- Directory Integration
+- Identity Lifecycle Management
+- User and Group Administration
+- Authentication and Authorization
+- Multi-Factor Authentication (MFA)
+- Just-in-Time (JIT) Provisioning
+- SAML 2.0 Single Sign-On
+- Profile and Attribute Mapping
+- Application Access Provisioning
+- IAM Troubleshooting
+- Root-Cause Analysis
+- Technical Documentation
+- Evidence-Based Validation
 
 
 
