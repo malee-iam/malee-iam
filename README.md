@@ -8,6 +8,8 @@ My current learning focuses on identity administration, authentication, access c
 ## Education
  Bachelor of Science in Forensic Psychology
  
+ Master of Science in Forensic Psychology (Ongoing)
+ 
 Grand Canyon University
 
 ## Current Focus
