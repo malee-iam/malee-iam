@@ -845,6 +845,37 @@ The lifecycle will demonstrate how identity attributes and access requirements c
 The scenario emphasizes least privilege, identity lifecycle management, access governance, and audit evidence.
 
 
+## Manual Role Mining and RBAC in Active Directory
+
+### Business Scenario
+Review HR employees’ existing group memberships to identify shared access and distinguish a manager role.
+
+### Findings
+Uma Joe, Maya, and John Reed shared membership in HR-Users. This suggested a common HR Employee role.
+
+### Implementation
+Created a Global Security group named HR-Managers and added Uma Joe. She retained her HR-Users membership.
+
+### Validation
+- HR-Users contains Uma, Maya, and John.
+- HR-Managers contains only Uma.
+- Uma’s memberships show both HR groups.
+- The comparison employee has HR-Users without HR-Managers.
+
+### Scope
+This was a manual AD role-mining and role-design exercise. No additional resource permissions or timesheet application access were configured.
+
+### Screenshot Evidence
+<img width="1552" height="1050" alt="rolemining-HR-Maya-memberof" src="https://github.com/user-attachments/assets/096947ee-bb57-4af5-b348-45136714fd7c" />
+<img width="1666" height="1164" alt="rolemining-HR-Uma-memberof" src="https://github.com/user-attachments/assets/80547ce1-e767-4b2d-bb14-a744bd0d70f2" />
+<img width="1612" height="1048" alt="rolemining-hr-manager-member" src="https://github.com/user-attachments/assets/5925f3bd-462b-4a37-beea-f3be27dd6627" />
+<img width="1578" height="1024" alt="rolemining-HRUsers" src="https://github.com/user-attachments/assets/c51763c6-538d-4f66-ab76-cc0700a29e43" />
+
+
+
+
+
+
 
 ## Skills Demonstrated
 
